@@ -127,6 +127,16 @@ void saveGraphics(PGraphics pg,boolean last){
 void nextImage(int _n){
   String imgFile = (String) imgNames.get(_n);
   img = loadImage(imgFile);
+  
+  if (flipVertical) {
+    PGraphics tempImg = createGraphics(img.width, img.height);
+    tempImg.beginDraw();
+    tempImg.scale(1,-1);
+    tempImg.image(img,0,-tempImg.height);
+    tempImg.endDraw();
+    img = tempImg.get();
+  }
+  
   println("RENDERING frame " + (counter+1) + " of " + imgNames.size());
 }
 

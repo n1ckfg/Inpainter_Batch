@@ -3,7 +3,8 @@ import org.opencv.photo.Photo;
 import org.opencv.imgproc.Imgproc;
 import processing.opengl.PGraphics2D;
 
-int threshold = 20; // 50
+int threshold = 50;
+boolean flipVertical = false;
 PFont font;
 int fontSize = 18;
 //PImage img;
@@ -11,9 +12,11 @@ PGraphics2D canvas;
 OpenCV opencv, mask;
 boolean showOrig = false;
 //boolean isDirty = true;
+Settings settings;
 
 void setup(){
   size(50, 50, P2D);
+  settings = new Settings("settings.txt");
   //img = loadImage("test.png");
   //initMask();
   font = createFont("Arial", fontSize);
@@ -25,22 +28,14 @@ void setup(){
 void draw(){
   fileFirstRun();
   
-  //if (isDirty) {
-    initMask();
-    processMask();
-    //isDirty = false;
-  //}
+  initMask();
+  processMask();
   
   targetImg.beginDraw();
   targetImg.image(opencv.getOutput(),0,0);
   targetImg.endDraw();
-      
-  if (showOrig) {
-    image(img, 0, 0);
-  } else {
-    image(targetImg, 0, 0); 
-  }
-  noTint();
+
+  image(targetImg, 0, 0); 
   image(canvas, img.width , 0);
   
   fill(255);

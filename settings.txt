@@ -1,0 +1,5 @@
+Threshold
+2
+
+Flip Vertical
+true

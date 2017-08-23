@@ -1,4 +1,5 @@
 void keyPressed() {
+  /*
   if (keyCode == UP) {
     threshold++;
     if (threshold > 255) threshold = 255;
@@ -14,4 +15,5 @@ void keyPressed() {
   if (key == ' ') {
     showOrig = !showOrig;
   }
+  */
 }
